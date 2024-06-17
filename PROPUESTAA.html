@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres andar conmigo?</title>
+    <link href="c:\Users\kikeh\Downloads\IMAGENROMANTICA.jpg" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f0ff;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 3em;
+            color: #ff69b4;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+        }
+        .button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .no {
+            background-color: #ff1493;
+            color: white;
+            opacity: 0.9;
+        }
+        .no:hover {
+            background-color: #ff69b4;
+            opacity: 1;
+        }
+        .message {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 2em;
+            justify-content: center;
+            align-items: center;
+        }
+        .counter {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Quieres andar conmigo? tatisssssssssss</h1>
+    <div class="container">
+        <img src="c:\Users\kikeh\Downloads\IMAGENROMANTICA.jpg" alt="DI QUE SIIIIIIIIIIIIIIII">
+        <div>
+            <button class="button yes" id="yesButton" onclick="acceptProposal()">Sí</button>
+            <button class="button no" id="noButton" onclick="moveNoButton()">No</button>
+        </div>
+        <div class="counter" id="counter">Veces que has dicho supongo por error  "No": 0</div>
+    </div>
+    <div class="message" id="message">
+        <p>¡Ya dijiste que sí y no te podrás deshacer de mí! Ti amo, Tatis .</p>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        function acceptProposal() {
+            document.getElementById('message').style.display = 'flex';
+        }
+
+        function moveNoButton() {
+            noClickCount++;
+            updateCounter();
+
+            if (noClickCount > 5) {
+                document.getElementById('yesButton').style.fontSize = '2em';
+                document.getElementById('noButton').style.fontSize = '0.8em';
+            }
+
+            if (noClickCount === 5) {
+                document.getElementById('counter').innerText = `¡Ya Tatis! Pon que sí.`;
+            }
+
+            var noButton = document.getElementById('noButton');
+            var maxX = window.innerWidth - noButton.clientWidth;
+            var maxY = window.innerHeight - noButton.clientHeight;
+            var x = Math.floor(Math.random() * maxX);
+            var y = Math.floor(Math.random() * maxY);
+            noButton.style.position = 'absolute';
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        }
+
+        function updateCounter() {
+            document.getElementById('counter').innerText = `Veces que has dicho "No": ${noClickCount}`;
+        }
+    </script>
+</body>
+</html>
